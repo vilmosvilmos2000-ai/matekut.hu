@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Matekút – Matematika egyszerűen</title>
-  <meta name="description" content="Matekút – a matematika tanulás új útja. Hamarosan indulunk!">
+  <meta name="description" content="Matekút – a matematika tanulás új útja.">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -29,12 +29,39 @@
       background-clip: text;
       margin-bottom: 1rem;
     }
+    h2 {
+      font-size: 1.5rem;
+      color: #e2e8f0;
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+    }
     p {
-      font-size: 1.25rem;
+      font-size: 1.15rem;
       color: #94a3b8;
-      max-width: 28rem;
+      max-width: 32rem;
       line-height: 1.6;
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
+    }
+    ul {
+      list-style: none;
+      text-align: left;
+      max-width: 28rem;
+      margin: 0 auto 2rem;
+    }
+    ul li {
+      position: relative;
+      padding-left: 1.5rem;
+      margin-bottom: 0.85rem;
+      color: #cbd5e1;
+      font-size: 1.05rem;
+      line-height: 1.5;
+    }
+    ul li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: #38bdf8;
+      font-weight: bold;
     }
     .badge {
       display: inline-block;
@@ -45,6 +72,16 @@
       color: #38bdf8;
       font-size: 0.875rem;
       font-weight: 500;
+      margin-top: 0.5rem;
+    }
+    .back-link {
+      margin-top: 2rem;
+      color: #38bdf8;
+      text-decoration: none;
+      font-size: 0.95rem;
+    }
+    .back-link:hover {
+      text-decoration: underline;
     }
     footer {
       position: absolute;
@@ -52,12 +89,52 @@
       font-size: 0.875rem;
       color: #64748b;
     }
+    #main-content, #help-content {
+      display: none;
+    }
   </style>
 </head>
 <body>
-  <h1>Matekút</h1>
-  <p>A matematika tanulás új, egyszerű útja. Hamarosan itt leszünk.</p>
-  <div class="badge">Hamarosan indul</div>
-  <footer>matekut.hu</footer>
+
+  <!-- Főoldal tartalom -->
+  <div id="main-content">
+    <h1>Matekút</h1>
+    <p>A matematika tanulás új, egyszerű útja. Hamarosan itt leszünk.</p>
+    <div class="badge">Hamarosan indul</div>
+  </div>
+
+  <!-- Help oldal tartalom -->
+  <div id="help-content">
+    <h1>Matekút Help</h1>
+    <h2>Miről szól a Matekút?</h2>
+    <p>A Matekút egy új magyar matematika-oktató platform, amelynek célja, hogy a matekot érthetővé, élvezhetővé és stresszmentessé tegye.</p>
+    
+    <ul>
+      <li><strong>Egyszerű és világos magyarázatok</strong> – a bonyolult témákat is könnyen érthető részekre bontva</li>
+      <li><strong>Saját tempóban tanulás</strong> – nincs sietség, mindenki a saját ritmusában haladhat</li>
+      <li><strong>Modern, tiszta felület</strong> – mobilról és számítógépről is kényelmesen használható</li>
+      <li><strong>Gyakorlati megközelítés</strong> – a hangsúly a megértésen és a problémamegoldáson van</li>
+      <li><strong>Ingyenes alaptartalom</strong> + később bővülő prémium anyagok</li>
+    </ul>
+
+    <p>Az oldal jelenleg fejlesztés alatt áll. Hamarosan elindul a teljes tartalom.</p>
+    
+    <a href="https://matekut.hu" class="back-link">← Vissza a főoldalra</a>
+  </div>
+
+  <footer id="footer-text">matekut.hu</footer>
+
+  <script>
+    const host = window.location.hostname;
+    const isHelp = host === 'help.matekut.hu' || host.startsWith('help.');
+
+    if (isHelp) {
+      document.getElementById('help-content').style.display = 'block';
+      document.getElementById('footer-text').textContent = 'help.matekut.hu';
+      document.title = 'Matekút Help – Segítség és információ';
+    } else {
+      document.getElementById('main-content').style.display = 'block';
+    }
+  </script>
 </body>
 </html>
