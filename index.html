@@ -1,140 +1,119 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="hu">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Matekút – Matematika egyszerűen</title>
-  <meta name="description" content="Matekút – a matematika tanulás új útja.">
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
-      color: #f8fafc;
-      text-align: center;
-      padding: 2rem;
-    }
-    h1 {
-      font-size: clamp(2.5rem, 8vw, 4.5rem);
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      background: linear-gradient(90deg, #38bdf8, #818cf8, #c084fc);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 1rem;
-    }
-    h2 {
-      font-size: 1.5rem;
-      color: #e2e8f0;
-      margin-bottom: 1.5rem;
-      font-weight: 600;
-    }
-    p {
-      font-size: 1.15rem;
-      color: #94a3b8;
-      max-width: 32rem;
-      line-height: 1.6;
-      margin-bottom: 1.5rem;
-    }
-    ul {
-      list-style: none;
-      text-align: left;
-      max-width: 28rem;
-      margin: 0 auto 2rem;
-    }
-    ul li {
-      position: relative;
-      padding-left: 1.5rem;
-      margin-bottom: 0.85rem;
-      color: #cbd5e1;
-      font-size: 1.05rem;
-      line-height: 1.5;
-    }
-    ul li::before {
-      content: "•";
-      position: absolute;
-      left: 0;
-      color: #38bdf8;
-      font-weight: bold;
-    }
-    .badge {
-      display: inline-block;
-      padding: 0.5rem 1.25rem;
-      background: rgba(56, 189, 248, 0.15);
-      border: 1px solid rgba(56, 189, 248, 0.3);
-      border-radius: 9999px;
-      color: #38bdf8;
-      font-size: 0.875rem;
-      font-weight: 500;
-      margin-top: 0.5rem;
-    }
-    .back-link {
-      margin-top: 2rem;
-      color: #38bdf8;
-      text-decoration: none;
-      font-size: 0.95rem;
-    }
-    .back-link:hover {
-      text-decoration: underline;
-    }
-    footer {
-      position: absolute;
-      bottom: 1.5rem;
-      font-size: 0.875rem;
-      color: #64748b;
-    }
-    #main-content, #help-content {
-      display: none;
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>matek tanulás</title>
+<meta name="description" content="matek tanulás játékosan">
+<meta name="theme-color" content="#f5f2ff">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🌀%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#17143a;--paper:#f5f2ff;
+  --violet:#6d4aff;--cyan:#19d3da;--sun:#ffc93c;--pink:#ff5fa2;
+  --font:"Bricolage Grotesque",ui-rounded,"Segoe UI",system-ui,sans-serif;
+  --lap:44px;--pad:clamp(20px,5vw,72px);
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:24px}
+body{font-family:var(--font);background:var(--ink);color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased}
+ul{padding:0;list-style:none}
+a{color:inherit}
+
+/* Hero */
+.hero{position:relative;overflow:hidden;background:var(--paper);padding:clamp(28px,6vw,64px) var(--pad) calc(var(--lap) + clamp(40px,8vw,96px))}
+.hero-in{position:relative;z-index:1;max-width:1100px;margin:0 auto}
+.logo{font-size:clamp(4.5rem,21vw,13rem);font-weight:800;font-variation-settings:"wdth" 75;letter-spacing:-.04em;line-height:.88}
+.lead{max-width:30ch;margin-top:26px;font-size:clamp(1.2rem,3vw,1.7rem);font-weight:500;line-height:1.3}
+.jump{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+.jump a{display:inline-block;padding:10px 18px;background:#fff;border:2.5px solid var(--ink);border-radius:999px;box-shadow:3px 3px 0 var(--ink);font-weight:700;text-decoration:none;transition:transform .15s,box-shadow .15s}
+.jump a:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 var(--ink)}
+.jump a:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}
+.jump a:focus-visible{outline:4px solid var(--violet);outline-offset:3px}
+
+.blobs{position:absolute;inset:0;pointer-events:none}
+.blob{position:absolute;aspect-ratio:1;mix-blend-mode:multiply;animation:morph 11s ease-in-out infinite alternate,drift 17s ease-in-out infinite alternate}
+.b1{width:min(52vw,520px);right:-6vw;top:-4vw;background:var(--violet)}
+.b2{width:min(40vw,400px);right:12vw;top:14vw;background:var(--cyan);animation-delay:-4s,-6s}
+.b3{width:min(34vw,340px);right:-2vw;top:22vw;background:var(--pink);animation-delay:-8s,-3s}
+@keyframes morph{
+  0%{border-radius:60% 40% 30% 70%/60% 30% 70% 40%}
+  50%{border-radius:30% 60% 70% 40%/50% 60% 30% 60%}
+  100%{border-radius:50% 50% 40% 60%/40% 70% 30% 60%}
+}
+@keyframes drift{from{transform:translate(0,0) rotate(0)}to{transform:translate(-4vw,3vh) rotate(8deg)}}
+
+/* Sections */
+.band{padding:calc(var(--lap) + clamp(36px,6vw,72px)) var(--pad) clamp(48px,8vw,96px);color:#fff}
+.band .section-title,.band .sub{color:#fff}
+.play{background:var(--violet)}
+.ai{background:var(--cyan);color:var(--ink)}
+.ai .section-title,.ai .sub{color:var(--ink)}
+.learn{background:var(--sun);color:var(--ink)}
+.learn .section-title,.learn .sub{color:var(--ink)}
+.other{background:var(--pink)}
+
+.section-title{font-size:clamp(2.2rem,6vw,4rem);font-weight:800;font-variation-settings:"wdth" 80;letter-spacing:-.03em;line-height:1}
+.sub{margin-top:10px;max-width:46ch;font-size:1.125rem}
+
+.grid{display:grid;grid-template-columns:repeat(2,1fr);grid-auto-flow:dense;gap:14px;margin-top:32px}
+@media(min-width:640px){.grid{grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:18px}}
+
+/* Tiles = buttons */
+.tile{position:relative;display:flex;flex-direction:column;justify-content:space-between;gap:14px;min-height:132px;padding:18px;background:#fff;color:var(--ink);text-decoration:none;border:2.5px solid var(--ink);border-radius:22px;box-shadow:4px 4px 0 var(--ink);transition:transform .15s,box-shadow .15s}
+.tile:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--ink)}
+.tile:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--ink)}
+.tile:focus-visible{outline:4px solid var(--ring);outline-offset:4px}
+.wide{grid-column:span 2;border-radius:34px;padding:22px}
+.ico{display:grid;place-items:center;width:48px;height:48px;background:var(--band);border:2.5px solid var(--ink);border-radius:50%;font-size:1.5rem;line-height:1;transition:transform .2s}
+.tile:hover .ico{transform:rotate(-12deg) scale(1.08)}
+.txt b{display:block;font-size:1.2rem;font-weight:700;line-height:1.15;letter-spacing:-.01em}
+.wide .txt b{font-size:1.6rem}
+.txt small{display:block;margin-top:4px;font-size:.85rem;color:#5b5880;word-break:break-all}
+.ext::after{content:"↗";position:absolute;top:14px;right:16px;font-weight:700}
+.soon{background:rgba(255,255,255,.55);border-style:dashed}
+.tag{position:absolute;top:12px;right:12px;font-size:.7rem;font-weight:700;padding:2px 8px;background:var(--ink);color:#fff;border-radius:999px}
+.play .tile{--band:#e8e0ff;--ring:var(--violet)}
+.ai .tile{--band:#d4f7f8;--ring:var(--cyan)}
+.learn .tile{--band:#fff3c4;--ring:#e0a800}
+.other .tile{--band:#ffe0ee;--ring:var(--pink)}
+
+footer{padding:40px var(--pad);background:var(--ink);color:rgba(255,255,255,.55);font-size:.9rem;text-align:center}
+</style>
 </head>
 <body>
-
-  <!-- Főoldal tartalom -->
-  <div id="main-content">
-    <h1>Matekút</h1>
-    <p>A matematika tanulás új, egyszerű útja. Hamarosan itt leszünk.</p>
-    <div class="badge">Hamarosan indul</div>
-  </div>
-
-  <!-- Help oldal tartalom -->
-  <div id="help-content">
-    <h1>Matekút Help</h1>
-    <h2>Miről szól a Matekút?</h2>
-    <p>A Matekút egy új magyar matematika-oktató platform, amelynek célja, hogy a matekot érthetővé, élvezhetővé és stresszmentessé tegye.</p>
-    
-    <ul>
-      <li><strong>Egyszerű és világos magyarázatok</strong> – a bonyolult témákat is könnyen érthető részekre bontva</li>
-      <li><strong>Saját tempóban tanulás</strong> – nincs sietség, mindenki a saját ritmusában haladhat</li>
-      <li><strong>Modern, tiszta felület</strong> – mobilról és számítógépről is kényelmesen használható</li>
-      <li><strong>Gyakorlati megközelítés</strong> – a hangsúly a megértésen és a problémamegoldáson van</li>
-      <li><strong>Ingyenes alaptartalom</strong> + később bővülő prémium anyagok</li>
+<header class="hero">
+  <div class="blobs" aria-hidden="true"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+  <div class="hero-in">
+    <h1 class="logo">fluxi</h1>
+    <p class="lead">Játékok, AI-kísérletek és tanulós oldalak egy helyen. Válassz egy témát, és ugorj be.</p>
+    <ul class="jump">
+      <li><a href="#jatekok">Játékok</a></li>
+      <li><a href="#ai">AI & Technológia</a></li>
+      <li><a href="#tanulas">Tanulás</a></li>
+      <li><a href="#egyeb">Egyéb</a></li>
     </ul>
-
-    <p>Az oldal jelenleg fejlesztés alatt áll. Hamarosan elindul a teljes tartalom.</p>
-    
-    <a href="https://matekut.hu" class="back-link">← Vissza a főoldalra</a>
   </div>
+</header>
 
-  <footer id="footer-text">matekut.hu</footer>
 
-  <script>
-    const host = window.location.hostname;
-    const isHelp = host === 'help.matekut.hu' || host.startsWith('help.');
 
-    if (isHelp) {
-      document.getElementById('help-content').style.display = 'block';
-      document.getElementById('footer-text').textContent = 'help.matekut.hu';
-      document.title = 'Matekút Help – Segítség és információ';
-    } else {
-      document.getElementById('main-content').style.display = 'block';
-    }
-  </script>
+
+
+<section class="band learn" id="tanulas" aria-labelledby="t-tanulas">
+  <h2 class="section-title" id="t-tanulas">Tanulás</h2>
+  <p class="sub">Gyakorolj, és készülj fel magabiztosan.</p>
+  <div class="grid">
+    <a class="tile" href="matekut.hu/utamatekhoz/"><span class="ico">👸</span><span class="txt"><b>Út a királynőhöz</b><small>feladatok a NAT2020 tananyag al kapcsolatban</small></span></a>
+  </div>
+</section>
+
+
+
+<footer>© fluxi.hu · Minden jog fenntartva</footer>
 </body>
 </html>
+
