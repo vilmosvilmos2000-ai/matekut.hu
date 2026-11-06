@@ -1,116 +1,197 @@
-<!doctype html>
-<html lang="hu">
-<head>
+<!DOCTYPE html>
+<html lang="hu"><head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>matek tanulás</title>
-<meta name="description" content="matek tanulás játékosan">
-<meta name="theme-color" content="#f5f2ff">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🌀%3C/text%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<title>Matek Út – Segíts a királynak eljutni a királynőhöz!</title>
+<meta name="description" content="Matekos kalandjáték 1–12. osztályosoknak: oldd meg a feladatokat, és segíts a királynak legyőzni az akadályokat az úton a királynőhöz. Minden játékban új feladatok, regisztráció nélkül.">
+<meta property="og:title" content="Matek Út – Segíts a királynak eljutni a királynőhöz!">
+<meta property="og:description" content="Matekos kalandjáték 1–12. osztályosoknak. Oldd meg a feladatokat, és győzd le az akadályokat!">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath d='M6 38L4 14L16 24L24 8L32 24L44 14L42 38Z' fill='%23ffd21f' stroke='%23e29a00' stroke-width='3' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&display=swap">
 <style>
-:root{
-  --ink:#17143a;--paper:#f5f2ff;
-  --violet:#6d4aff;--cyan:#19d3da;--sun:#ffc93c;--pink:#ff5fa2;
-  --font:"Bricolage Grotesque",ui-rounded,"Segoe UI",system-ui,sans-serif;
-  --lap:44px;--pad:clamp(20px,5vw,72px);
-}
-*{box-sizing:border-box;margin:0}
-html{scroll-behavior:smooth;scroll-padding-top:24px}
-body{font-family:var(--font);background:var(--ink);color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased}
-ul{padding:0;list-style:none}
+:root{color-scheme:light;--ink:#2b1a5c;--v:#6d28d9}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font:600 18px/1.4 "Baloo 2","Trebuchet MS",system-ui,sans-serif;color:var(--ink);background:#fff8e1;overflow-x:hidden}
 a{color:inherit}
-
-/* Hero */
-.hero{position:relative;overflow:hidden;background:var(--paper);padding:clamp(28px,6vw,64px) var(--pad) calc(var(--lap) + clamp(40px,8vw,96px))}
-.hero-in{position:relative;z-index:1;max-width:1100px;margin:0 auto}
-.logo{font-size:clamp(4.5rem,21vw,13rem);font-weight:800;font-variation-settings:"wdth" 75;letter-spacing:-.04em;line-height:.88}
-.lead{max-width:30ch;margin-top:26px;font-size:clamp(1.2rem,3vw,1.7rem);font-weight:500;line-height:1.3}
-.jump{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
-.jump a{display:inline-block;padding:10px 18px;background:#fff;border:2.5px solid var(--ink);border-radius:999px;box-shadow:3px 3px 0 var(--ink);font-weight:700;text-decoration:none;transition:transform .15s,box-shadow .15s}
-.jump a:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 var(--ink)}
-.jump a:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}
-.jump a:focus-visible{outline:4px solid var(--violet);outline-offset:3px}
-
-.blobs{position:absolute;inset:0;pointer-events:none}
-.blob{position:absolute;aspect-ratio:1;mix-blend-mode:multiply;animation:morph 11s ease-in-out infinite alternate,drift 17s ease-in-out infinite alternate}
-.b1{width:min(52vw,520px);right:-6vw;top:-4vw;background:var(--violet)}
-.b2{width:min(40vw,400px);right:12vw;top:14vw;background:var(--cyan);animation-delay:-4s,-6s}
-.b3{width:min(34vw,340px);right:-2vw;top:22vw;background:var(--pink);animation-delay:-8s,-3s}
-@keyframes morph{
-  0%{border-radius:60% 40% 30% 70%/60% 30% 70% 40%}
-  50%{border-radius:30% 60% 70% 40%/50% 60% 30% 60%}
-  100%{border-radius:50% 50% 40% 60%/40% 70% 30% 60%}
-}
-@keyframes drift{from{transform:translate(0,0) rotate(0)}to{transform:translate(-4vw,3vh) rotate(8deg)}}
-
-/* Sections */
-.band{padding:calc(var(--lap) + clamp(36px,6vw,72px)) var(--pad) clamp(48px,8vw,96px);color:#fff}
-.band .section-title,.band .sub{color:#fff}
-.play{background:var(--violet)}
-.ai{background:var(--cyan);color:var(--ink)}
-.ai .section-title,.ai .sub{color:var(--ink)}
-.learn{background:var(--sun);color:var(--ink)}
-.learn .section-title,.learn .sub{color:var(--ink)}
-.other{background:var(--pink)}
-
-.section-title{font-size:clamp(2.2rem,6vw,4rem);font-weight:800;font-variation-settings:"wdth" 80;letter-spacing:-.03em;line-height:1}
-.sub{margin-top:10px;max-width:46ch;font-size:1.125rem}
-
-.grid{display:grid;grid-template-columns:repeat(2,1fr);grid-auto-flow:dense;gap:14px;margin-top:32px}
-@media(min-width:640px){.grid{grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:18px}}
-
-/* Tiles = buttons */
-.tile{position:relative;display:flex;flex-direction:column;justify-content:space-between;gap:14px;min-height:132px;padding:18px;background:#fff;color:var(--ink);text-decoration:none;border:2.5px solid var(--ink);border-radius:22px;box-shadow:4px 4px 0 var(--ink);transition:transform .15s,box-shadow .15s}
-.tile:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--ink)}
-.tile:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--ink)}
-.tile:focus-visible{outline:4px solid var(--ring);outline-offset:4px}
-.wide{grid-column:span 2;border-radius:34px;padding:22px}
-.ico{display:grid;place-items:center;width:48px;height:48px;background:var(--band);border:2.5px solid var(--ink);border-radius:50%;font-size:1.5rem;line-height:1;transition:transform .2s}
-.tile:hover .ico{transform:rotate(-12deg) scale(1.08)}
-.txt b{display:block;font-size:1.2rem;font-weight:700;line-height:1.15;letter-spacing:-.01em}
-.wide .txt b{font-size:1.6rem}
-.txt small{display:block;margin-top:4px;font-size:.85rem;color:#5b5880;word-break:break-all}
-.ext::after{content:"↗";position:absolute;top:14px;right:16px;font-weight:700}
-.soon{background:rgba(255,255,255,.55);border-style:dashed}
-.tag{position:absolute;top:12px;right:12px;font-size:.7rem;font-weight:700;padding:2px 8px;background:var(--ink);color:#fff;border-radius:999px}
-.play .tile{--band:#e8e0ff;--ring:var(--violet)}
-.ai .tile{--band:#d4f7f8;--ring:var(--cyan)}
-.learn .tile{--band:#fff3c4;--ring:#e0a800}
-.other .tile{--band:#ffe0ee;--ring:var(--pink)}
-
-footer{padding:40px var(--pad);background:var(--ink);color:rgba(255,255,255,.55);font-size:.9rem;text-align:center}
-</style>
-</head>
+svg.i{display:block;width:100%;height:100%;overflow:visible}
+.top{position:absolute;z-index:5;top:0;left:0;right:0;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:calc(env(safe-area-inset-top,0px) + 12px) clamp(14px,4vw,40px) 0}
+.brand{display:flex;align-items:center;gap:8px;text-decoration:none;font:800 clamp(24px,4.4vw,32px)/1 "Baloo 2",sans-serif;color:#fff;-webkit-text-stroke:.2em #6d28d9;paint-order:stroke fill;text-shadow:0 3px 0 #4c1d95}
+.brand i{width:40px;height:40px;display:block}
+.pill{padding:9px 20px;border-radius:999px;background:#fff;color:#5a30b8;text-decoration:none;font-weight:800;font-size:18px;box-shadow:0 4px 0 rgba(90,48,184,.25);transition:transform .15s}
+.pill:hover{transform:translateY(-2px)}
+.hero{position:relative;overflow:hidden;text-align:center;background:linear-gradient(#2fb4ff 0,#8fdcff 30%,#cdf4ff 54%,#c8f56e 80%,#37d67a 100%)}
+.sky{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.rainbow{--r:min(48vw,420px);position:absolute;left:50%;top:70px;width:calc(var(--r)*2);height:var(--r);transform:translateX(-50%);background:radial-gradient(circle var(--r) at 50% 100%,transparent 0 58%,#ff4d6d 59% 64%,#ff9f1c 64% 69%,#ffe14a 69% 74%,#3ddc84 74% 79%,#2cb5ff 79% 84%,#9b5de5 84% 89%,transparent 90%)}
+.sun{position:absolute;top:70px;left:clamp(10px,4vw,50px);width:clamp(66px,12vw,110px);filter:drop-shadow(0 0 16px #ffd21f)}
+.cloud{position:absolute;left:-30%;width:clamp(90px,16vw,160px);filter:drop-shadow(0 8px 0 rgba(40,110,230,.18));animation:drift var(--t) linear infinite;animation-delay:var(--d)}
+.mx{position:absolute;left:var(--l);bottom:-90px;width:var(--s);height:var(--s);display:grid;place-items:center;border-radius:50%;background:rgba(255,255,255,.55);border:3px solid rgba(255,255,255,.95);font:800 calc(var(--s)*.58)/1 "Baloo 2",sans-serif;color:var(--c);animation:rise var(--t) linear var(--d) infinite}
+.in{position:relative;z-index:2;padding:clamp(86px,12vw,130px) 18px 0}
+h1{margin:0;font:800 clamp(64px,15vw,130px)/.95 "Baloo 2",sans-serif;color:#fff;-webkit-text-stroke:.1em #6d28d9;paint-order:stroke fill;text-shadow:0 .06em 0 #4c1d95,0 0 .3em rgba(255,255,255,.8);animation:wob 3s ease-in-out infinite alternate}
+.sub{max-width:30ch;margin:10px auto 22px;font-size:clamp(19px,3.8vw,26px);text-shadow:0 2px 0 rgba(255,255,255,.85),0 0 14px rgba(255,255,255,.7)}
+.go{position:relative;display:inline-flex;align-items:center;gap:12px;padding:15px 34px 15px 18px;border-radius:999px;color:#fff;text-decoration:none;font:800 clamp(24px,5.4vw,34px)/1 "Baloo 2",sans-serif;background:linear-gradient(#6ee787,#22c55e);box-shadow:0 8px 0 #138a40,0 16px 28px rgba(19,138,64,.35);text-shadow:0 2px 0 rgba(0,0,0,.25);transition:transform .15s,box-shadow .15s;animation:bnc 1.6s ease-in-out infinite}
+.go::after{content:"";position:absolute;inset:-6px;border-radius:999px;border:4px solid rgba(255,255,255,.95);animation:ring 1.8s ease-out infinite}
+.go:hover{transform:translateY(-3px) scale(1.05);animation:none}
+.go:active{transform:translateY(5px);box-shadow:0 3px 0 #138a40}
+.go:focus-visible,.pill:focus-visible{outline:4px solid #5a30b8;outline-offset:5px}
+.go svg{width:38px;height:38px;flex:none}
+.chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:20px auto 0;max-width:640px}
+.chips b{padding:5px 14px;border-radius:999px;background:rgba(255,255,255,.85);font-size:16px;color:#5a30b8;box-shadow:0 3px 0 rgba(90,48,184,.18)}
+.land{position:relative;z-index:1;display:block;width:100%;height:clamp(230px,40vw,400px);margin-top:-6px}
+main{position:relative;z-index:3}
+section{padding:clamp(44px,8vw,80px) 18px}
+.how{margin-top:-36px;border-radius:40px 40px 0 0;background:#fff8e1;position:relative}
+.wrap{max-width:1020px;margin:0 auto}
+h2{margin:0 0 6px;text-align:center;font:800 clamp(30px,6vw,46px)/1.05 "Baloo 2",sans-serif;color:#5a30b8}
+.lead{text-align:center;max-width:44ch;margin:0 auto 28px;font-size:clamp(17px,3vw,20px)}
+.cards{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.card{position:relative;background:#fff;border-radius:28px;padding:26px 22px 24px;text-align:center;box-shadow:0 8px 0 var(--sh,#e4def3),0 16px 30px rgba(60,40,120,.1);border:3px solid var(--bd,#fff)}
+.card h3{margin:12px 0 6px;font:800 26px/1.1 "Baloo 2",sans-serif;color:var(--tc,#5a30b8)}
+.card p{margin:0;font-size:17px}
+.big{display:grid;place-items:center;width:96px;height:96px;margin:0 auto;border-radius:50%;background:var(--bg,#ffe0f0);font:800 34px/1 "Baloo 2",sans-serif;color:var(--tc,#5a30b8);box-shadow:inset 0 -6px 0 rgba(0,0,0,.08)}
+.big svg{width:62px;height:62px}
+.num{position:absolute;top:-14px;left:-8px;width:42px;height:42px;display:grid;place-items:center;border-radius:50%;background:#ffd21f;color:#5a30b8;font:800 24px/1 "Baloo 2",sans-serif;box-shadow:0 4px 0 #e29a00;transform:rotate(-8deg)}
+.world{background:linear-gradient(#c9f3ff,#e4fbc8)}
+.obs{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.ob{background:#fff;border-radius:22px;padding:16px 10px 14px;text-align:center;box-shadow:0 6px 0 hsl(var(--h) 70% 80%);border:3px solid hsl(var(--h) 90% 88%);transition:transform .2s}
+.ob:hover{transform:translateY(-6px) rotate(-1.5deg)}
+.ob i{display:block;width:64px;height:64px;margin:0 auto 6px}
+.ob b{display:block;font:800 19px/1.1 "Baloo 2",sans-serif;color:hsl(var(--h) 60% 32%)}
+.gr .card:nth-child(1){--sh:#9be0a8;--bd:#d7f6dc;--bg:#d7f6dc;--tc:#1d8a45}
+.gr .card:nth-child(2){--sh:#ffd08a;--bd:#fff0d6;--bg:#fff0d6;--tc:#c2650a}
+.gr .card:nth-child(3){--sh:#c9b0ff;--bd:#eee4ff;--bg:#eee4ff;--tc:#6d28d9}
+.gr .card h3 small{display:block;font:600 17px/1.2 "Baloo 2",sans-serif;color:var(--ink);opacity:.75}
+.fin{text-align:center;background:linear-gradient(#ffe9a8,#ffc2e2);border-radius:40px 40px 0 0;position:relative;overflow:hidden}
+.fin .pair{display:flex;justify-content:center;gap:10px;margin-bottom:6px}
+.fin .pair i{display:block;width:clamp(90px,20vw,130px);height:clamp(90px,20vw,130px)}
+.fin p{max-width:32ch;margin:6px auto 24px;font-size:clamp(18px,3.6vw,24px)}
+footer{padding:22px 18px calc(env(safe-area-inset-bottom,0px) + 22px);text-align:center;background:#5a30b8;color:#e9deff;font-size:16px}
+footer b{color:#fff}
+.kk{animation:hop 1.3s ease-in-out infinite alternate}.kq{animation-delay:-.65s}
+.wv{transform-box:fill-box;transform-origin:0 100%;animation:wave .5s ease-in-out infinite alternate}
+.fs{transform-box:fill-box;transform-origin:50% 100%;animation:swy 3.4s ease-in-out infinite alternate}
+.fg{transform-box:fill-box;transform-origin:0 50%;animation:flw .5s ease-in-out infinite alternate}
+.ry{transform-box:fill-box;transform-origin:center;animation:spin 20s linear infinite}
+.fl3{transform-box:fill-box;transform-origin:50% 100%;animation:flk .35s ease-in-out infinite alternate}
+.bee{animation:beef 9s ease-in-out infinite}.bf{animation:bfy 10s ease-in-out infinite}
+.wg{transform-box:fill-box;transform-origin:50% 100%;animation:flapy .09s ease-in-out infinite alternate}
+.bw{transform-box:fill-box;transform-origin:50% 50%;animation:flapx .35s ease-in-out infinite alternate}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes drift{to{transform:translateX(170vw)}}
+@keyframes rise{0%{transform:translateY(0) rotate(0);opacity:0}8%,92%{opacity:1}100%{transform:translateY(-115vh) rotate(60deg);opacity:0}}
+@keyframes wob{from{transform:rotate(-1.5deg) translateY(0)}to{transform:rotate(1.5deg) translateY(-6px)}}
+@keyframes bnc{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@keyframes ring{0%{transform:scale(1);opacity:.9}100%{transform:scale(1.2,1.5);opacity:0}}
+@keyframes hop{to{transform:translateY(-6px)}}
+@keyframes wave{from{transform:rotate(-14deg)}to{transform:rotate(14deg)}}
+@keyframes swy{from{transform:rotate(-4deg)}to{transform:rotate(4deg)}}
+@keyframes flw{to{transform:skewY(10deg)}}
+@keyframes flk{from{transform:scale(1,.9)}to{transform:scale(.94,1.08)}}
+@keyframes beef{0%{transform:translate(0,0) scaleX(1)}30%{transform:translate(140px,-30px) scaleX(1)}49%{transform:translate(220px,10px) scaleX(1)}51%{transform:translate(220px,10px) scaleX(-1)}80%{transform:translate(70px,-26px) scaleX(-1)}100%{transform:translate(0,0) scaleX(-1)}}
+@keyframes bfy{0%,100%{transform:translate(0,0) rotate(-8deg)}25%{transform:translate(60px,-40px) rotate(10deg)}50%{transform:translate(130px,-10px) rotate(-6deg)}75%{transform:translate(60px,30px) rotate(8deg)}}
+@keyframes flapy{to{transform:scaleY(.4)}}
+@keyframes flapx{to{transform:scaleX(.35)}}
+@media (max-width:520px){.pill{padding:8px 14px;font-size:16px}.brand i{width:32px;height:32px}}
+@media (prefers-reduced-motion:reduce){*,*::after{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style></head>
 <body>
 <header class="hero">
-  <div class="blobs" aria-hidden="true"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
-  <div class="hero-in">
-    <h1 class="logo">matekos tanulás</h1>
-    <p class="lead">matek tanulás játékosan</p>
-    <ul class="jump">
-      <li><a href="#tanulas">Tanulás</a></li>
-    </ul>
-  </div>
+<div class="top"><a class="brand" href="#"><i data-ic="crown"></i>Matek Út</a><a class="pill" href="https://matekut.hu/utamatekhoz">Játék</a></div>
+<div class="sky" aria-hidden="true">
+<div class="rainbow"></div>
+<svg class="sun" viewBox="0 0 48 48"><g class="ry"><circle cx="24" cy="24" r="16" fill="none" stroke="#ffb02e" stroke-width="6" stroke-dasharray="3 6.1"/></g><circle cx="24" cy="24" r="11" fill="#ffd21f" stroke="#ffb02e" stroke-width="2"/><circle cx="20" cy="22" r="1.6" fill="#2b1a5c"/><circle cx="28" cy="22" r="1.6" fill="#2b1a5c"/><path d="M20 27Q24 31 28 27" fill="none" stroke="#c2530a" stroke-width="2" stroke-linecap="round"/><circle cx="17.5" cy="26" r="2" fill="#ff9f7a" opacity=".7"/><circle cx="30.5" cy="26" r="2" fill="#ff9f7a" opacity=".7"/></svg>
+<svg class="cloud" style="top:22%;--t:70s;--d:-20s" viewBox="0 0 48 48" data-ic="cloud"></svg>
+<svg class="cloud" style="top:40%;--t:95s;--d:-60s;width:clamp(70px,12vw,120px)" viewBox="0 0 48 48" data-ic="cloud"></svg>
+<svg class="cloud" style="top:12%;--t:80s;--d:-45s;width:clamp(60px,10vw,100px)" viewBox="0 0 48 48" data-ic="cloud"></svg>
+<span class="mx" style="--l:5%;--s:46px;--d:-2s;--t:17s;--c:#ff3d9a">+</span><span class="mx" style="--l:16%;--s:36px;--d:-9s;--t:21s;--c:#2cb5ff">7</span><span class="mx" style="--l:27%;--s:52px;--d:-5s;--t:19s;--c:#9b5de5">×</span><span class="mx" style="--l:39%;--s:34px;--d:-13s;--t:24s;--c:#ff9f1c">=</span><span class="mx" style="--l:52%;--s:48px;--d:-7s;--t:18s;--c:#22c55e">÷</span><span class="mx" style="--l:63%;--s:38px;--d:-16s;--t:22s;--c:#ff3d9a">3</span><span class="mx" style="--l:74%;--s:54px;--d:-1s;--t:20s;--c:#2cb5ff">−</span><span class="mx" style="--l:84%;--s:40px;--d:-11s;--t:23s;--c:#9b5de5">9</span><span class="mx" style="--l:92%;--s:44px;--d:-4s;--t:16s;--c:#ff9f1c">π</span>
+</div>
+<div class="in">
+<h1>Matek Út</h1>
+<p class="sub">Segíts a királynak eljutni a királynőhöz! Oldd meg a feladatokat, és győzd le az akadályokat!</p>
+<a class="go" href="https://matekut.hu/utamatekhoz"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#fff"/><path d="M9.5 7.5L16.5 12L9.5 16.5Z" fill="#22c55e"/></svg>Játék indítása</a>
+<div class="chips"><b>1–12. osztály</b><b>NAT2020 szerint</b><b>Minden játékban új feladatok</b></div>
+</div>
+<svg class="land" id="land" viewBox="0 0 800 300" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+<defs><linearGradient id="g1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#86e36b"/><stop offset="1" stop-color="#2fc468"/></linearGradient><linearGradient id="g2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c2f56e"/><stop offset="1" stop-color="#37d67a"/></linearGradient></defs>
+<path d="M0 180Q150 140 330 178T650 160T800 168V300H0Z" fill="url(#g1)"/>
+<g id="back"></g>
+<path d="M0 236Q200 205 410 234T800 222V300H0Z" fill="url(#g2)"/>
+<path d="M-30 296Q170 262 330 276T560 262T830 250" fill="none" stroke="#ffe27a" stroke-width="34" stroke-linecap="round"/>
+<path d="M-30 296Q170 262 330 276T560 262T830 250" fill="none" stroke="#f3a52b" stroke-width="3" stroke-dasharray="2 22" stroke-linecap="round" opacity=".6"/>
+<g id="front"></g>
+<g id="cg" transform="translate(560 28) scale(4.6)"></g>
+<g transform="translate(70 118) scale(3.7)"><g class="kk" id="kg"></g></g>
+<g transform="translate(455 150) scale(3.2)"><g class="kk kq" id="qg"></g></g>
+<g class="bee"><g transform="translate(40 120) scale(.9)" id="bee"></g></g>
+<g class="bf"><g transform="translate(300 70) scale(.9)" id="bfy"></g></g>
+</svg>
 </header>
-
-
-
-
-
-<section class="band learn" id="tanulas" aria-labelledby="t-tanulas">
-  <h2 class="section-title" id="t-tanulas">Tanulás</h2>
-  <p class="sub">Gyakorolj, és készülj fel magabiztosan.</p>
-  <div class="grid">
-    <a class="tile" href="matekut.hu/utamatekhoz/"><span class="ico">👸</span><span class="txt"><b>Út a királynőhöz</b><small>feladatok a NAT2020 tananyag al kapcsolatban</small></span></a>
-  </div>
-</section>
-
-
-
-<footer>© fluxi.hu · Minden jog fenntartva</footer>
-</body>
-</html>
-
+<main>
+<section class="how"><div class="wrap">
+<h2>Hogyan működik?</h2>
+<p class="lead">Három lépés, és indulhat a kaland. Nincs regisztráció, rögtön játszhatsz.</p>
+<div class="cards">
+<div class="card" style="--sh:#ffb3d9;--bd:#ffe3f1;--bg:#ffe3f1;--tc:#d6247a"><span class="num">1</span><div class="big">1–12</div><h3>Válaszd ki az osztályod</h3><p>Alsós, felsős vagy középiskolás vagy? Mindenkinek jut pálya a saját tananyagából.</p></div>
+<div class="card" style="--sh:#9fd8ff;--bd:#dff2ff;--bg:#dff2ff;--tc:#1c7fc4"><span class="num">2</span><div class="big" style="font-size:28px">7+5</div><h3>Oldd meg a feladatot</h3><p>Kattints a lila állomásra, írd be az eredményt. Ha jó, a király tovább mehet.</p></div>
+<div class="card" style="--sh:#9be0a8;--bd:#d7f6dc;--bg:#d7f6dc;--tc:#1d8a45"><span class="num">3</span><div class="big"><svg viewBox="0 0 48 48" data-ic="bridge"></svg></div><h3>Nézd, ahogy átjut</h3><p>Híd épül, létra kerül elő, a láva jéggé fagy. Minden akadálynak saját kalandja van.</p></div>
+</div></div></section>
+<section class="world"><div class="wrap">
+<h2>Tíz akadály, egy királynő</h2>
+<p class="lead">Minden helyes válasz után a király legyőz egy akadályt. A végén a királynő vár!</p>
+<div class="obs" id="obs"></div>
+</div></section>
+<section class="gr" style="background:#fff8e1"><div class="wrap">
+<h2>Minden osztálynak</h2>
+<p class="lead">A feladatok a NAT2020 tananyagát követik, és minden játékban újak.</p>
+<div class="cards">
+<div class="card"><div class="big"><svg viewBox="0 0 48 48" data-ic="sprout"></svg></div><h3>Alsó tagozat<small>1–4. osztály</small></h3><p>Összeadás, kivonás, szorzótábla, osztás, törtek, mértékegységek és szöveges feladatok.</p></div>
+<div class="card"><div class="big"><svg viewBox="0 0 48 48" data-ic="shield"></svg></div><h3>Felső tagozat<small>5–8. osztály</small></h3><p>Tizedes törtek, negatív számok, százalék, egyenletek, Pitagorasz-tétel, átlag.</p></div>
+<div class="card"><div class="big"><svg viewBox="0 0 48 48" data-ic="crown"></svg></div><h3>Középiskola<small>9–12. osztály</small></h3><p>Egyenletrendszerek, másodfokú egyenletek, szögfüggvények, logaritmus, sorozatok, valószínűség.</p></div>
+</div></div></section>
+<section class="fin"><div class="wrap">
+<div class="pair"><i data-ic="king"></i><i data-ic="queen"></i></div>
+<h2>Készen állsz?</h2>
+<p>A király már indulna, csak rád vár. Telefonon, tableten és számítógépen is működik, hangeffektekkel.</p>
+<a class="go" href="https://matekut.hu/utamatekhoz"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#fff"/><path d="M9.5 7.5L16.5 12L9.5 16.5Z" fill="#22c55e"/></svg>Játék indítása</a>
+</div></section>
+</main>
+<footer><b>Matek Út</b> · matekut.hu</footer>
+<script>
+const FL=(c,m)=>`<path d='M24 28V46' stroke='#3fae3f' stroke-width='3' fill='none' stroke-linecap='round'/><g fill='${c}'><circle cx='24' cy='11' r='7'/><circle cx='32.6' cy='17.2' r='7'/><circle cx='29.3' cy='27.3' r='7'/><circle cx='18.7' cy='27.3' r='7'/><circle cx='15.4' cy='17.2' r='7'/></g><circle cx='24' cy='20' r='6' fill='${m}'/>`;
+const IC={
+crown:`<path d='M6 38L4 14L16 24L24 8L32 24L44 14L42 38Z' fill='#ffd21f' stroke='#e29a00' stroke-width='3' stroke-linejoin='round'/><circle cx='24' cy='28' r='4' fill='#ff3d6e'/><circle cx='12' cy='30' r='3' fill='#2cb5ff'/><circle cx='36' cy='30' r='3' fill='#3ddc84'/>`,
+sprout:`<path d='M24 44V24' stroke='#3fae3f' stroke-width='4' stroke-linecap='round'/><path d='M24 28Q6 28 6 10Q24 10 24 28Z' fill='#6df08a' stroke='#25b85c' stroke-width='2'/><path d='M24 24Q42 24 42 6Q24 6 24 24Z' fill='#4cd964' stroke='#25b85c' stroke-width='2'/>`,
+shield:`<path d='M24 4L40 10V24Q40 38 24 44Q8 38 8 24V10Z' fill='#ffd21f' stroke='#e29a00' stroke-width='3' stroke-linejoin='round'/><path d='M24 14L27 22H35L29 27L31 35L24 30L17 35L19 27L13 22H21Z' fill='#fff'/>`,
+cloud:`<path d='M12 36Q4 36 4 29Q4 22 12 22Q13 12 24 12Q33 12 35 20Q44 20 44 28Q44 36 35 36Z' fill='#fff'/><ellipse cx='24' cy='36' rx='18' ry='3' fill='#d6ecff'/>`,
+bridge:`<rect x='4' y='27' width='40' height='7' rx='2' fill='#e0a550' stroke='#8a5324' stroke-width='2'/><path d='M6 27Q24 6 42 27' fill='none' stroke='#8a5324' stroke-width='3'/><path d='M15 18V27M24 14V27M33 18V27' stroke='#8a5324' stroke-width='2.5'/><path d='M4 42q5-4 10 0t10 0t10 0t10 0' fill='none' stroke='#2cb5ff' stroke-width='3' stroke-linecap='round'/>`,
+river:`<path d='M5 16q6-7 12 0t12 0t12 0' fill='none' stroke='#2cb5ff' stroke-width='5' stroke-linecap='round'/><path d='M5 27q6-7 12 0t12 0t12 0' fill='none' stroke='#7fdcff' stroke-width='5' stroke-linecap='round'/><path d='M5 38q6-7 12 0t12 0t12 0' fill='none' stroke='#2cb5ff' stroke-width='5' stroke-linecap='round'/>`,
+wall:`<rect x='5' y='10' width='38' height='28' rx='2' fill='#ff8a65' stroke='#c24a30' stroke-width='2.5'/><path d='M5 19.3H43M5 28.7H43M20 10V19.3M32 19.3V28.7M16 28.7V38' stroke='#ffe3d3' stroke-width='2.5'/>`,
+fire:`<g class='fl3'><path d='M24 4C34 17 41 24 39 34C37 43 11 43 9 34C7 26 15 22 17 11C22 15 22 19 24 22C27 14 24 9 24 4Z' fill='#ff4d1f'/><path d='M24 24C30 30 33 34 31 38C29 43 19 43 17 38C15 34 21 30 24 24Z' fill='#ffc21f'/></g>`,
+hole:`<ellipse cx='24' cy='28' rx='19' ry='10' fill='#2b1a7a' stroke='#c58f55' stroke-width='4'/><ellipse cx='24' cy='30' rx='11' ry='5' fill='#6a4fd0'/><path d='M8 18l4 5M40 18l-4 5M24 12v5' stroke='#c58f55' stroke-width='3' stroke-linecap='round'/>`,
+bush:`<circle cx='15' cy='30' r='11' fill='#1e8f4e'/><circle cx='33' cy='30' r='11' fill='#2fcf6a'/><circle cx='24' cy='19' r='12' fill='#4cd964'/><path d='M9 20L3 17L9 26ZM39 20L45 17L39 26ZM24 6L20 0L28 0ZM5 34L0 36L6 39ZM43 34L48 36L42 39Z' fill='#8a5324'/><circle cx='20' cy='28' r='2.6' fill='#ff3d6e'/><circle cx='30' cy='22' r='2.6' fill='#ff3d6e'/><circle cx='36' cy='34' r='2.6' fill='#ff3d6e'/>`,
+croc:`<path d='M3 30Q3 23 12 23H36Q45 23 45 30Q45 37 36 37H12Q3 37 3 30Z' fill='#3cae4a' stroke='#2a8a37' stroke-width='2'/><circle cx='12' cy='21' r='6' fill='#3cae4a' stroke='#2a8a37' stroke-width='2'/><circle cx='12' cy='20' r='3.5' fill='#ffe14a'/><ellipse cx='12' cy='20' rx='1.2' ry='2.8' fill='#222'/><path d='M4 31H44' stroke='#1e6f2c' stroke-width='2'/><path d='M18 37l3 5 3-5M28 37l3 5 3-5' fill='#fff'/><path d='M3 45q5-4 10 0t10 0t10 0t10 0' fill='none' stroke='#5ad1ff' stroke-width='3' stroke-linecap='round'/>`,
+gate:`<path d='M14 22V16A10 10 0 0 1 34 16V22' fill='none' stroke='#8b9aa8' stroke-width='5'/><rect x='9' y='22' width='30' height='22' rx='5' fill='#ffd21f' stroke='#b8860b' stroke-width='2.5'/><circle cx='24' cy='31' r='3.5' fill='#6b3d17'/><rect x='22.5' y='32' width='3' height='7' rx='1' fill='#6b3d17'/>`,
+mtn:`<path d='M2 43L20 8L30 26L35 18L46 43Z' fill='#8d7bff' stroke='#5a46c8' stroke-width='2.5' stroke-linejoin='round'/><path d='M20 8L14 20L20 17L26 21Z' fill='#fff'/><path d='M35 18L31 26L35 24L39 27Z' fill='#fff'/>`,
+drg:`<path d='M10 20L5 5L17 13ZM38 20L43 5L31 13Z' fill='#ff9f1c' stroke='#d97e00' stroke-width='1.5' stroke-linejoin='round'/><ellipse cx='24' cy='28' rx='16' ry='15' fill='#4ccf7a' stroke='#2a9d55' stroke-width='2'/><ellipse cx='24' cy='35' rx='10' ry='7' fill='#7be39a'/><circle cx='17' cy='24' r='3.5' fill='#fff'/><circle cx='31' cy='24' r='3.5' fill='#fff'/><circle cx='17.8' cy='24.6' r='1.8' fill='#222'/><circle cx='31.8' cy='24.6' r='1.8' fill='#222'/><circle cx='20.5' cy='34' r='1.4' fill='#2a9d55'/><circle cx='27.5' cy='34' r='1.4' fill='#2a9d55'/><path d='M19 40Q24 43 29 40' fill='none' stroke='#2a9d55' stroke-width='2' stroke-linecap='round'/>`,
+lava:`<path d='M4 44L17 17H31L44 44Z' fill='#8a5a46' stroke='#5b3a2e' stroke-width='2.5' stroke-linejoin='round'/><path d='M17 17Q24 24 31 17Q29 10 24 12Q19 10 17 17Z' fill='#ff5a1f'/><path d='M22 20L19 36M27 20L30 32' stroke='#ff7a1f' stroke-width='3.5' stroke-linecap='round'/><g class='fl3'><circle cx='24' cy='6' r='3' fill='#ffd21f'/></g><circle cx='15' cy='9' r='2' fill='#ffb02e'/><circle cx='33' cy='11' r='2.2' fill='#ffd21f'/>`,
+castle:`<rect x='3' y='22' width='11' height='22' fill='#ffe9f2' stroke='#e8a5c4' stroke-width='2'/><path d='M1 22L8.5 8L16 22Z' fill='#ff5d9a' stroke='#d93a7c' stroke-width='1.5' stroke-linejoin='round'/><rect x='34' y='22' width='11' height='22' fill='#ffe9f2' stroke='#e8a5c4' stroke-width='2'/><path d='M32 22L39.5 8L47 22Z' fill='#7c5cff' stroke='#5a3fd1' stroke-width='1.5' stroke-linejoin='round'/><rect x='13' y='28' width='22' height='16' fill='#fff3d6' stroke='#e8c98a' stroke-width='2'/><rect x='17' y='15' width='14' height='15' fill='#ffe9f2' stroke='#e8a5c4' stroke-width='2'/><path d='M15 15L24 3L33 15Z' fill='#ffc928' stroke='#d29b00' stroke-width='1.5' stroke-linejoin='round'/><path d='M20 44V38Q20 34 24 34Q28 34 28 38V44Z' fill='#ffd21f'/><path d='M24 3V-5' stroke='#8a5324' stroke-width='2'/><g class='fg'><path d='M24-5L32-2L24 1Z' fill='#ff3d6e'/></g>`,
+king:`<ellipse cx='24' cy='45.5' rx='12' ry='2.5' fill='#000' opacity='.2'/><path d='M12 44V35Q12 29 24 29Q36 29 36 35V44Z' fill='#e63946'/><path d='M12 44H36' stroke='#ffd21f' stroke-width='3'/><rect x='19' y='38' width='10' height='3' fill='#ffd21f'/><ellipse cx='24' cy='30' rx='9' ry='3.5' fill='#fff'/><circle cx='24' cy='19' r='11' fill='#ffd9a8'/><path d='M14 22Q14 37 24 37Q34 37 34 22Q29 27 24 26Q19 27 14 22Z' fill='#fff' stroke='#dcdcdc'/><circle cx='20' cy='18' r='1.8' fill='#2b1a5c'/><circle cx='28' cy='18' r='1.8' fill='#2b1a5c'/><circle cx='16.5' cy='22' r='2.2' fill='#ff8fa3' opacity='.6'/><circle cx='31.5' cy='22' r='2.2' fill='#ff8fa3' opacity='.6'/><path d='M21 26Q24 29 27 26' fill='none' stroke='#b3202a' stroke-width='1.6' stroke-linecap='round'/><path d='M14 11L13 2L19 7L24 0L29 7L35 2L34 11Z' fill='#ffd21f' stroke='#e29a00' stroke-width='1.5' stroke-linejoin='round'/><circle cx='24' cy='9' r='1.7' fill='#ff3d6e'/><rect x='15' y='43' width='7' height='4' rx='2' fill='#7a4520'/><rect x='26' y='43' width='7' height='4' rx='2' fill='#7a4520'/><g class='wv'><path d='M35 34Q43 29 43 21' fill='none' stroke='#c1121f' stroke-width='4' stroke-linecap='round'/><circle cx='43' cy='19' r='3' fill='#ffd9a8' stroke='#fff' stroke-width='1.2'/></g>`,
+queen:`<ellipse cx='24' cy='46' rx='13' ry='2.5' fill='#000' opacity='.2'/><path d='M11 22Q9 40 17 44H31Q39 40 37 22Q35 6 24 6Q13 6 11 22Z' fill='#f5a623'/><path d='M9 46Q14 30 24 29Q34 30 39 46Z' fill='#ff5fa6'/><path d='M9 46Q24 49 39 46' fill='none' stroke='#ffd21f' stroke-width='3'/><rect x='19' y='35' width='10' height='3' fill='#ffd21f'/><circle cx='24' cy='20' r='10.5' fill='#ffe0bd'/><path d='M13.5 20Q16 9 24 9Q32 9 34.5 20Q30 14 24 14Q18 14 13.5 20Z' fill='#f5a623'/><circle cx='20' cy='20' r='1.8' fill='#2b1a5c'/><circle cx='28' cy='20' r='1.8' fill='#2b1a5c'/><circle cx='17' cy='24' r='2.2' fill='#ff8fa3' opacity='.6'/><circle cx='31' cy='24' r='2.2' fill='#ff8fa3' opacity='.6'/><path d='M20.5 25Q24 29 27.5 25' fill='none' stroke='#b3202a' stroke-width='1.8' stroke-linecap='round'/><path d='M16 10L15 2L20 6L24 0L28 6L33 2L32 10Z' fill='#ffd21f' stroke='#e29a00' stroke-width='1.5' stroke-linejoin='round'/><circle cx='24' cy='8' r='1.6' fill='#ff3d6e'/><g class='wv'><path d='M10 34Q3 29 3 21' fill='none' stroke='#e0407f' stroke-width='4' stroke-linecap='round'/><circle cx='3' cy='19' r='3' fill='#ffe0bd' stroke='#fff' stroke-width='1.2'/></g>`,
+tp:`<rect x='21' y='34' width='6' height='11' rx='2' fill='#8a5324'/><path d='M24 3L11 19H18L7 32H41L30 19H37Z' fill='#2fcf6a' stroke='#1e8f4e' stroke-width='2' stroke-linejoin='round'/><path d='M24 3L19 12' stroke='#7bf59a' stroke-width='2.5' stroke-linecap='round'/>`,
+tr:`<rect x='21' y='28' width='6' height='17' rx='2' fill='#8a5324'/><circle cx='15' cy='24' r='10' fill='#25b85c'/><circle cx='33' cy='24' r='10' fill='#4cd964'/><circle cx='24' cy='16' r='13' fill='#3de07a'/><circle cx='20' cy='13' r='4' fill='#7bf59a' opacity='.7'/><circle cx='30' cy='22' r='2.2' fill='#ff4d6d'/><circle cx='17' cy='24' r='2.2' fill='#ff4d6d'/>`,
+fa:FL('#ff7eb6','#ffd21f'),fb:FL('#ffd21f','#ff7a1f'),
+mu:`<path d='M5 28Q5 8 24 8Q43 8 43 28Z' fill='#ff4d4d' stroke='#c93333' stroke-width='2' stroke-linejoin='round'/><rect x='17' y='28' width='14' height='14' rx='5' fill='#fff3d6' stroke='#e0cfa6' stroke-width='2'/><circle cx='15' cy='20' r='3.5' fill='#fff'/><circle cx='28' cy='15' r='3' fill='#fff'/><circle cx='35' cy='24' r='2.5' fill='#fff'/>`,
+bee:`<g class='wg'><ellipse cx='20' cy='16' rx='6' ry='9' fill='#cdeeff' stroke='#7fd4ff' stroke-width='1.5' transform='rotate(-20 20 16)'/><ellipse cx='30' cy='16' rx='6' ry='9' fill='#cdeeff' stroke='#7fd4ff' stroke-width='1.5' transform='rotate(20 30 16)'/></g><ellipse cx='24' cy='29' rx='13' ry='10' fill='#ffd21f' stroke='#2b1a5c' stroke-width='2'/><path d='M19 20.5V37.5M26 19.7V38.3' stroke='#2b1a5c' stroke-width='4'/><circle cx='33' cy='26' r='2.2' fill='#2b1a5c'/><path d='M12 29L5 31L12 33Z' fill='#2b1a5c'/><path d='M35 20Q39 14 43 14' stroke='#2b1a5c' stroke-width='1.8' fill='none'/>`,
+bfy:`<g class='bw'><path d='M24 22Q8 6 6 20Q6 30 24 26Z' fill='#ff7eb6'/><path d='M24 22Q40 6 42 20Q42 30 24 26Z' fill='#ff7eb6'/><path d='M24 26Q10 28 12 38Q18 42 24 30Z' fill='#9b3dff'/><path d='M24 26Q38 28 36 38Q30 42 24 30Z' fill='#9b3dff'/></g><rect x='22.5' y='16' width='3' height='22' rx='1.5' fill='#2b1a5c'/><path d='M23 16Q20 9 17 8M25 16Q28 9 31 8' stroke='#2b1a5c' stroke-width='1.6' fill='none'/>`};
+const put=(k,x,y,s,c)=>`<g transform='translate(${x} ${y}) scale(${s})'><g${c?` class='${c}'`:''}>${IC[k]}</g></g>`;
+const $=id=>document.getElementById(id);
+document.querySelectorAll('[data-ic]').forEach(e=>{const k=e.dataset.ic;e.innerHTML=e.tagName=='svg'?IC[k]:`<svg class='i' viewBox='0 0 48 48'>${IC[k]}</svg>`});
+$('back').innerHTML=put('tp',20,96,2.2)+put('tp',112,138,1.5)+put('tr',700,92,2.4)+put('tr',560,128,1.5)+put('tp',770,130,1.6);
+$('front').innerHTML=[['fa',150,226],['fb',226,242],['fa',292,226],['fb',520,240],['fa',620,228],['fb',30,242],['fa',720,240]].map(([k,x,y],j)=>`<g class='fs' style='animation-delay:-${j*.6}s'>${put(k,x,y,.9)}</g>`).join('')+put('mu',470,236,1.1)+put('mu',86,250,.8);
+$('cg').innerHTML=IC.castle;$('kg').innerHTML=IC.king;$('qg').innerHTML=IC.queen;$('bee').innerHTML=IC.bee;$('bfy').innerHTML=IC.bfy;
+const OB=[['river','Széles folyó'],['wall','Magas fal'],['fire','Tűzfal'],['hole','Mély szakadék'],['bush','Tüskés bozót'],['croc','Krokodilos mocsár'],['gate','Bezárt kapu'],['mtn','Meredek hegy'],['drg','Alvó sárkány'],['lava','Forró láva']];
+$('obs').innerHTML=OB.map(([k,n],j)=>`<div class='ob' style='--h:${j*34+10}'><i><svg class='i' viewBox='0 0 48 48'>${IC[k]}</svg></i><b>${n}</b></div>`).join('')+`<div class='ob' style='--h:330'><i><svg class='i' viewBox='0 0 48 48'>${IC.castle}</svg></i><b>A királynő kastélya</b></div>`;
+</script>
+</body></html>
