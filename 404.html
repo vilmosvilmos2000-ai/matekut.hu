@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="hu"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<meta name="robots" content="noindex">
+<title>404 – Hoppá, eltévedt a király! | Matek Út</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath d='M6 38L4 14L16 24L24 8L32 24L44 14L42 38Z' fill='%23ffd21f' stroke='%23e29a00' stroke-width='3' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&display=swap">
+<style>
+:root{color-scheme:light;--ink:#2b1a5c}
+*{box-sizing:border-box}
+html{background:#37d67a}
+body{margin:0;min-height:100vh;min-height:100svh;position:relative;overflow-x:hidden;display:flex;flex-direction:column;color:var(--ink);font:600 18px/1.35 "Baloo 2","Trebuchet MS",system-ui,sans-serif;background:linear-gradient(#2fb4ff 0,#8fdcff 28%,#cdf4ff 50%,#c8f56e 78%,#37d67a 100%)}
+.sky{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.rainbow{--r:min(46vw,400px);position:absolute;left:50%;top:clamp(4px,2vw,24px);width:calc(var(--r)*2);height:var(--r);transform:translateX(-50%);background:radial-gradient(circle var(--r) at 50% 100%,transparent 0 58%,#ff4d6d 59% 64%,#ff9f1c 64% 69%,#ffe14a 69% 74%,#3ddc84 74% 79%,#2cb5ff 79% 84%,#9b5de5 84% 89%,transparent 90%)}
+.sun{position:absolute;top:clamp(10px,3vw,30px);left:clamp(10px,3vw,40px);width:clamp(70px,14vw,120px);filter:drop-shadow(0 0 16px #ffd21f)}
+.ry{transform-box:fill-box;transform-origin:center;animation:spin 20s linear infinite}
+.cloud{position:absolute;left:-30%;width:clamp(90px,18vw,170px);filter:drop-shadow(0 8px 0 rgba(40,110,230,.18));animation:drift var(--t) linear infinite;animation-delay:var(--d)}
+.mx{position:absolute;left:var(--l);bottom:-90px;width:var(--s);height:var(--s);display:grid;place-items:center;border-radius:50%;background:rgba(255,255,255,.55);border:3px solid rgba(255,255,255,.95);font:800 calc(var(--s)*.58)/1 "Baloo 2",sans-serif;color:var(--c);animation:rise var(--t) linear var(--d) infinite}
+main{position:relative;z-index:2;flex:1;display:flex;flex-direction:column}
+.wrap{flex:1;text-align:center;padding:clamp(22px,5vw,46px) 18px 0}
+.logo{font:800 clamp(110px,28vw,210px)/.9 "Baloo 2",system-ui,sans-serif;margin:0 0 4px;-webkit-text-stroke:.09em #6d28d9;paint-order:stroke fill;text-shadow:0 .06em 0 #4c1d95,0 0 .3em rgba(255,255,255,.9);user-select:none}
+.logo span{display:inline-block;animation:wob 2.4s ease-in-out infinite alternate}
+.logo span:nth-child(1){color:#ffd21f}.logo span:nth-child(2){color:#fff;animation-delay:-.8s}.logo span:nth-child(3){color:#ff7eb6;animation-delay:-1.6s}
+h1{font:800 clamp(28px,6.4vw,48px)/1.1 "Baloo 2",system-ui,sans-serif;margin:6px 0 8px;color:#5a30b8;text-shadow:0 3px 0 rgba(255,255,255,.9),0 0 18px rgba(255,255,255,.8)}
+p{max-width:34ch;margin:0 auto 24px;font-size:clamp(17px,3.4vw,22px);text-shadow:0 2px 0 rgba(255,255,255,.8)}
+.go{position:relative;display:inline-flex;align-items:center;gap:12px;padding:14px 32px 14px 18px;border-radius:999px;color:#fff;text-decoration:none;font:800 clamp(22px,5vw,30px)/1 "Baloo 2",system-ui,sans-serif;background:linear-gradient(#6ee787,#22c55e);box-shadow:0 8px 0 #138a40,0 16px 28px rgba(19,138,64,.35);text-shadow:0 2px 0 rgba(0,0,0,.25);transition:transform .15s,box-shadow .15s;animation:bnc 1.6s ease-in-out infinite}
+.go::after{content:"";position:absolute;inset:-6px;border-radius:999px;border:4px solid rgba(255,255,255,.95);animation:ring 1.8s ease-out infinite}
+.go:hover{transform:translateY(-3px) scale(1.05);animation:none}
+.go:active{transform:translateY(5px);box-shadow:0 3px 0 #138a40,0 6px 12px rgba(19,138,64,.3)}
+.go:focus-visible{outline:4px solid #5a30b8;outline-offset:6px}
+.go svg{flex:none}
+.land{display:block;width:100%;height:clamp(210px,36vw,340px);margin-top:clamp(-10px,-1vw,0px)}
+.bee{animation:beef 9s ease-in-out infinite}.bf{animation:bfy 10s ease-in-out infinite}
+.wg{transform-box:fill-box;transform-origin:50% 100%;animation:flapy .09s ease-in-out infinite alternate}
+.bw{transform-box:fill-box;transform-origin:50% 50%;animation:flapx .35s ease-in-out infinite alternate}
+.kh{transform-box:fill-box;transform-origin:50% 100%;animation:tl 2.4s ease-in-out infinite alternate}
+.pp{animation:look 3.2s ease-in-out infinite alternate}
+.a1,.a2{transform-box:fill-box;animation:shr 1.6s ease-in-out infinite alternate}.a1{transform-origin:100% 0}.a2{transform-origin:0 0;animation-delay:-.8s}
+.kk{transform-box:fill-box;transform-origin:50% 100%;animation:br 2s ease-in-out infinite alternate}
+.tq{animation:tbb 2s ease-in-out infinite alternate}
+.sw{transform-box:fill-box;transform-origin:50% 50%;animation:swy 3s ease-in-out infinite alternate}.sw2{animation-delay:-1.2s}.sw3{animation-delay:-2.1s}
+.fs{transform-box:fill-box;transform-origin:50% 100%;animation:swy 3.4s ease-in-out infinite alternate}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes drift{to{transform:translateX(170vw)}}
+@keyframes rise{0%{transform:translateY(0) rotate(0);opacity:0}8%,92%{opacity:1}100%{transform:translateY(-115vh) rotate(60deg);opacity:0}}
+@keyframes wob{from{transform:translateY(0) rotate(-4deg)}to{transform:translateY(-12px) rotate(4deg)}}
+@keyframes bnc{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@keyframes ring{0%{transform:scale(1);opacity:.9}100%{transform:scale(1.22,1.55);opacity:0}}
+@keyframes beef{0%{transform:translate(0,0) scaleX(1)}30%{transform:translate(140px,-30px) scaleX(1)}49%{transform:translate(220px,10px) scaleX(1)}51%{transform:translate(220px,10px) scaleX(-1)}80%{transform:translate(70px,-26px) scaleX(-1)}100%{transform:translate(0,0) scaleX(-1)}}
+@keyframes bfy{0%,100%{transform:translate(0,0) rotate(-8deg)}25%{transform:translate(60px,-40px) rotate(10deg)}50%{transform:translate(130px,-10px) rotate(-6deg)}75%{transform:translate(60px,30px) rotate(8deg)}}
+@keyframes flapy{to{transform:scaleY(.4)}}
+@keyframes flapx{to{transform:scaleX(.35)}}
+@keyframes tl{from{transform:rotate(-9deg)}to{transform:rotate(7deg)}}
+@keyframes look{from{transform:translateX(-1.6px)}to{transform:translateX(1.6px)}}
+@keyframes shr{from{transform:rotate(-10deg)}to{transform:rotate(10deg)}}
+@keyframes br{to{transform:scaleY(1.025)}}
+@keyframes tbb{to{transform:translateY(-8px)}}
+@keyframes swy{from{transform:rotate(-4deg)}to{transform:rotate(4deg)}}
+@media (prefers-reduced-motion:reduce){*,*::after{animation:none!important;transition:none!important}}
+</style></head>
+<body>
+<div class="sky" aria-hidden="true">
+<div class="rainbow"></div>
+<svg class="sun" viewBox="0 0 48 48"><g class="ry"><circle cx="24" cy="24" r="16" fill="none" stroke="#ffb02e" stroke-width="6" stroke-dasharray="3 6.1"/></g><circle cx="24" cy="24" r="11" fill="#ffd21f" stroke="#ffb02e" stroke-width="2"/><circle cx="20" cy="22" r="1.6" fill="#2b1a5c"/><circle cx="28" cy="22" r="1.6" fill="#2b1a5c"/><path d="M20 27Q24 31 28 27" fill="none" stroke="#c2530a" stroke-width="2" stroke-linecap="round"/><circle cx="17.5" cy="26" r="2" fill="#ff9f7a" opacity=".7"/><circle cx="30.5" cy="26" r="2" fill="#ff9f7a" opacity=".7"/></svg>
+<svg class="cloud" style="top:14%;--t:70s;--d:-20s" viewBox="0 0 48 48"><path d="M12 36Q4 36 4 29Q4 22 12 22Q13 12 24 12Q33 12 35 20Q44 20 44 28Q44 36 35 36Z" fill="#fff"/><ellipse cx="24" cy="36" rx="18" ry="3" fill="#d6ecff"/></svg>
+<svg class="cloud" style="top:34%;--t:95s;--d:-60s;width:clamp(70px,13vw,130px)" viewBox="0 0 48 48"><path d="M12 36Q4 36 4 29Q4 22 12 22Q13 12 24 12Q33 12 35 20Q44 20 44 28Q44 36 35 36Z" fill="#fff"/><ellipse cx="24" cy="36" rx="18" ry="3" fill="#d6ecff"/></svg>
+<svg class="cloud" style="top:6%;--t:80s;--d:-45s;width:clamp(60px,11vw,110px)" viewBox="0 0 48 48"><path d="M12 36Q4 36 4 29Q4 22 12 22Q13 12 24 12Q33 12 35 20Q44 20 44 28Q44 36 35 36Z" fill="#fff"/><ellipse cx="24" cy="36" rx="18" ry="3" fill="#d6ecff"/></svg>
+<span class="mx" style="--l:5%;--s:46px;--d:-2s;--t:17s;--c:#ff3d9a">+</span>
+<span class="mx" style="--l:16%;--s:36px;--d:-9s;--t:21s;--c:#2cb5ff">7</span>
+<span class="mx" style="--l:27%;--s:52px;--d:-5s;--t:19s;--c:#9b5de5">×</span>
+<span class="mx" style="--l:39%;--s:34px;--d:-13s;--t:24s;--c:#ff9f1c">=</span>
+<span class="mx" style="--l:52%;--s:48px;--d:-7s;--t:18s;--c:#22c55e">÷</span>
+<span class="mx" style="--l:63%;--s:38px;--d:-16s;--t:22s;--c:#ff3d9a">3</span>
+<span class="mx" style="--l:74%;--s:54px;--d:-1s;--t:20s;--c:#2cb5ff">−</span>
+<span class="mx" style="--l:84%;--s:40px;--d:-11s;--t:23s;--c:#9b5de5">9</span>
+<span class="mx" style="--l:92%;--s:44px;--d:-4s;--t:16s;--c:#ff9f1c">π</span>
+<span class="mx" style="--l:46%;--s:32px;--d:-18s;--t:26s;--c:#22c55e">5</span>
+</div>
+<main>
+<div class="wrap">
+<div class="logo" role="img" aria-label="404-es hiba"><span>4</span><span>0</span><span>4</span></div>
+<h1>Hoppá! Eltévedt a király!</h1>
+<p>Ezt az oldalt nem találjuk, pedig mindenhol kerestük. A királynő a játékban vár rád, gyere, induljunk vissza együtt!</p>
+<a class="go" href="https://matekut.hu/"><svg viewBox="0 0 24 24" width="34" height="34" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#fff"/><path d="M9.5 7.5L16.5 12L9.5 16.5Z" fill="#22c55e"/></svg>Vissza a játékhoz</a>
+</div>
+<svg class="land" viewBox="0 0 800 300" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+<defs>
+<linearGradient id="gh1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#86e36b"/><stop offset="1" stop-color="#2fc468"/></linearGradient>
+<linearGradient id="gh2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c2f56e"/><stop offset="1" stop-color="#37d67a"/></linearGradient>
+<g id="tp"><rect x="21" y="34" width="6" height="11" rx="2" fill="#8a5324"/><path d="M24 3L11 19H18L7 32H41L30 19H37Z" fill="#2fcf6a" stroke="#1e8f4e" stroke-width="2" stroke-linejoin="round"/><path d="M24 3L19 12" stroke="#7bf59a" stroke-width="2.5" stroke-linecap="round"/></g>
+<g id="tr"><rect x="21" y="28" width="6" height="17" rx="2" fill="#8a5324"/><circle cx="15" cy="24" r="10" fill="#25b85c"/><circle cx="33" cy="24" r="10" fill="#4cd964"/><circle cx="24" cy="16" r="13" fill="#3de07a"/><circle cx="20" cy="13" r="4" fill="#7bf59a" opacity=".7"/><circle cx="30" cy="22" r="2.2" fill="#ff4d6d"/><circle cx="17" cy="24" r="2.2" fill="#ff4d6d"/></g>
+<g id="fa"><path d="M24 28V46" stroke="#3fae3f" stroke-width="3" stroke-linecap="round"/><g fill="#ff7eb6"><circle cx="24" cy="11" r="7"/><circle cx="32.6" cy="17.2" r="7"/><circle cx="29.3" cy="27.3" r="7"/><circle cx="18.7" cy="27.3" r="7"/><circle cx="15.4" cy="17.2" r="7"/></g><circle cx="24" cy="20" r="6" fill="#ffd21f"/></g>
+<g id="fb"><path d="M24 28V46" stroke="#3fae3f" stroke-width="3" stroke-linecap="round"/><g fill="#ffd21f"><circle cx="24" cy="11" r="7"/><circle cx="32.6" cy="17.2" r="7"/><circle cx="29.3" cy="27.3" r="7"/><circle cx="18.7" cy="27.3" r="7"/><circle cx="15.4" cy="17.2" r="7"/></g><circle cx="24" cy="20" r="6" fill="#ff7a1f"/></g>
+<g id="mu"><path d="M5 28Q5 8 24 8Q43 8 43 28Z" fill="#ff4d4d" stroke="#c93333" stroke-width="2" stroke-linejoin="round"/><rect x="17" y="28" width="14" height="14" rx="5" fill="#fff3d6" stroke="#e0cfa6" stroke-width="2"/><circle cx="15" cy="20" r="3.5" fill="#fff"/><circle cx="28" cy="15" r="3" fill="#fff"/><circle cx="35" cy="24" r="2.5" fill="#fff"/></g>
+</defs>
+<path d="M0 195Q150 150 320 190T640 178T800 172V300H0Z" fill="url(#gh1)"/>
+<use href="#tp" transform="translate(30 100) scale(2.2)"/><use href="#tp" transform="translate(120 142) scale(1.5)"/><use href="#tr" transform="translate(716 96) scale(2.4)"/><use href="#tr" transform="translate(560 140) scale(1.5)"/>
+<path d="M0 238Q200 205 410 236T800 224V300H0Z" fill="url(#gh2)"/>
+<g class="fs"><use href="#fa" transform="translate(150 230) scale(.9)"/></g><g class="fs" style="animation-delay:-1s"><use href="#fb" transform="translate(226 244) scale(.9)"/></g><g class="fs" style="animation-delay:-2s"><use href="#fa" transform="translate(292 228) scale(.9)"/></g><g class="fs" style="animation-delay:-.5s"><use href="#fb" transform="translate(520 242) scale(.9)"/></g><g class="fs" style="animation-delay:-1.5s"><use href="#fa" transform="translate(600 232) scale(.9)"/></g><g class="fs" style="animation-delay:-2.5s"><use href="#fb" transform="translate(40 244) scale(.9)"/></g><use href="#mu" transform="translate(470 238) scale(1.1)"/><use href="#mu" transform="translate(88 252) scale(.8)"/>
+<g><rect x="654" y="140" width="12" height="122" rx="3" fill="#a8682d" stroke="#6b3d17" stroke-width="3"/>
+<g class="sw"><path d="M660 150h70l14 12-14 12h-70z" fill="#ffd21f" stroke="#e29a00" stroke-width="3" stroke-linejoin="round"/><text x="694" y="171" text-anchor="middle" font-size="24" font-weight="800" fill="#6d28d9" font-family="Baloo 2,sans-serif">?</text></g>
+<g class="sw sw2"><path d="M660 190h-70l-14 12 14 12h70z" fill="#ff7eb6" stroke="#d93a7c" stroke-width="3" stroke-linejoin="round"/><text x="626" y="211" text-anchor="middle" font-size="24" font-weight="800" fill="#6d28d9" font-family="Baloo 2,sans-serif">?</text></g>
+<g class="sw sw3"><path d="M660 230h62l12 11-12 11h-62z" fill="#3fb8ff" stroke="#1c8fd6" stroke-width="3" stroke-linejoin="round"/><text x="690" y="249" text-anchor="middle" font-size="24" font-weight="800" fill="#fff" font-family="Baloo 2,sans-serif">?</text></g></g>
+<g transform="translate(356 50) scale(4.4)"><g class="kk">
+<ellipse cx="24" cy="45.5" rx="12" ry="2.5" fill="#000" opacity=".2"/>
+<rect x="15" y="43" width="7" height="4" rx="2" fill="#7a4520"/><rect x="26" y="43" width="7" height="4" rx="2" fill="#7a4520"/>
+<path d="M12 44V35Q12 29 24 29Q36 29 36 35V44Z" fill="#e63946"/><path d="M12 44H36" stroke="#ffd21f" stroke-width="3"/><rect x="19" y="38" width="10" height="3" fill="#ffd21f"/>
+<g class="a1"><path d="M13 33Q5 33 4 40" fill="none" stroke="#c1121f" stroke-width="4" stroke-linecap="round"/><circle cx="4" cy="41" r="2.6" fill="#ffd9a8" stroke="#fff" stroke-width="1.2"/></g>
+<g class="a2"><path d="M35 33Q43 33 44 40" fill="none" stroke="#c1121f" stroke-width="4" stroke-linecap="round"/><circle cx="44" cy="41" r="2.6" fill="#ffd9a8" stroke="#fff" stroke-width="1.2"/></g>
+<ellipse cx="24" cy="30" rx="9" ry="3.5" fill="#fff"/>
+<g class="kh"><circle cx="24" cy="19" r="11" fill="#ffd9a8"/><path d="M14 22Q14 37 24 37Q34 37 34 22Q29 27 24 26Q19 27 14 22Z" fill="#fff" stroke="#dcdcdc"/>
+<circle cx="20" cy="17.5" r="3" fill="#fff"/><circle cx="28" cy="17.5" r="3" fill="#fff"/><g class="pp"><circle cx="20" cy="18" r="1.5" fill="#2b1a5c"/><circle cx="28" cy="18" r="1.5" fill="#2b1a5c"/></g>
+<path d="M16.5 13.5Q20 11.5 23 13.5M25 13.5Q28 11.5 31.5 13.5" fill="none" stroke="#b8b8b8" stroke-width="1.2" stroke-linecap="round"/>
+<circle cx="16.5" cy="22" r="2.2" fill="#ff8fa3" opacity=".6"/><circle cx="31.5" cy="22" r="2.2" fill="#ff8fa3" opacity=".6"/><ellipse cx="24" cy="27.5" rx="2" ry="2.5" fill="#b3202a"/>
+<path d="M14 11L13 2L19 7L24 0L29 7L35 2L34 11Z" fill="#ffd21f" stroke="#e29a00" stroke-width="1.5" stroke-linejoin="round"/><circle cx="24" cy="9" r="1.7" fill="#ff3d6e"/></g>
+</g></g>
+<g class="tq"><circle cx="508" cy="112" r="5" fill="#fff" stroke="#b79cff" stroke-width="3"/><circle cx="524" cy="96" r="8" fill="#fff" stroke="#b79cff" stroke-width="3"/>
+<g fill="#fff" stroke="#b79cff" stroke-width="4"><ellipse cx="566" cy="62" rx="48" ry="30"/><circle cx="534" cy="58" r="20"/><circle cx="600" cy="52" r="20"/><circle cx="566" cy="38" r="22"/></g>
+<g fill="#fff"><ellipse cx="566" cy="62" rx="46" ry="28"/><circle cx="534" cy="58" r="18"/><circle cx="600" cy="52" r="18"/><circle cx="566" cy="38" r="20"/></g>
+<text x="566" y="78" text-anchor="middle" font-size="54" font-weight="800" fill="#9b3dff" font-family="Baloo 2,sans-serif">?</text></g>
+<g class="bee"><g transform="translate(60 120) scale(.9)"><g class="wg"><ellipse cx="20" cy="16" rx="6" ry="9" fill="#cdeeff" stroke="#7fd4ff" stroke-width="1.5" transform="rotate(-20 20 16)"/><ellipse cx="30" cy="16" rx="6" ry="9" fill="#cdeeff" stroke="#7fd4ff" stroke-width="1.5" transform="rotate(20 30 16)"/></g><ellipse cx="24" cy="29" rx="13" ry="10" fill="#ffd21f" stroke="#2b1a5c" stroke-width="2"/><path d="M19 20.5V37.5M26 19.7V38.3" stroke="#2b1a5c" stroke-width="4"/><circle cx="33" cy="26" r="2.2" fill="#2b1a5c"/><path d="M12 29L5 31L12 33Z" fill="#2b1a5c"/><path d="M35 20Q39 14 43 14" stroke="#2b1a5c" stroke-width="1.8" fill="none"/></g></g>
+<g class="bf"><g transform="translate(250 70) scale(.9)"><g class="bw"><path d="M24 22Q8 6 6 20Q6 30 24 26Z" fill="#ff7eb6"/><path d="M24 22Q40 6 42 20Q42 30 24 26Z" fill="#ff7eb6"/><path d="M24 26Q10 28 12 38Q18 42 24 30Z" fill="#9b3dff"/><path d="M24 26Q38 28 36 38Q30 42 24 30Z" fill="#9b3dff"/></g><rect x="22.5" y="16" width="3" height="22" rx="1.5" fill="#2b1a5c"/><path d="M23 16Q20 9 17 8M25 16Q28 9 31 8" stroke="#2b1a5c" stroke-width="1.6" fill="none"/></g></g>
+</svg>
+</main>
+</body></html>
